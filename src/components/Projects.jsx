@@ -11,7 +11,7 @@ const Projects = () => {
   useEffect(() => {
     const fetchProjects = async () => {
       try {
-        const response = await fetch('https://api.github.com/users/Loickaltenbach/repos?sort=updated&per_page=6')
+        const response = await fetch('https://api.github.com/users/Loickaltenbach/repos')
         if (!response.ok) {
           throw new Error('Failed to fetch projects')
         }
@@ -67,7 +67,7 @@ const Projects = () => {
     return (
       <section id="projects" className="projects">
         <div className="container">
-          <h2>My Projects</h2>
+          <h2>My Personal Projects</h2>
           <div className="loading">Loading projects...</div>
         </div>
       </section>
@@ -78,7 +78,7 @@ const Projects = () => {
     return (
       <section id="projects" className="projects">
         <div className="container">
-          <h2>My Projects</h2>
+          <h2>My Personal Projects</h2>
           <div className="error">Error: {error}</div>
         </div>
       </section>
@@ -95,7 +95,7 @@ const Projects = () => {
           transition={{ duration: 0.6 }}
           viewport={{ once: true }}
         >
-          My Projects
+          My Personal Projects
         </motion.h2>
         <motion.div 
           className="projects-grid"
@@ -114,14 +114,29 @@ const Projects = () => {
               whileHover={{ y: -5, scale: 1.02 }}
               transition={{ duration: 0.2 }}
               role="listitem"
+              onClick={() => window.open(project.html_url, '_blank', 'noopener,noreferrer')}
+              style={{ cursor: 'pointer' }}
+              tabIndex={0}
+              onKeyDown={(e) => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                  e.preventDefault()
+                  window.open(project.html_url, '_blank', 'noopener,noreferrer')
+                }
+              }}
+              aria-label={`View ${project.name} project on GitHub`}
             >
               <header className="project-header">
                 <h3>{project.name}</h3>
-                {project.language && (
-                  <span className={`language-tag ${project.language.toLowerCase()}`}>
-                    {project.language}
+                <div className="project-meta">
+                  {project.language && (
+                    <span className={`language-tag ${project.language.toLowerCase()}`}>
+                      {project.language}
+                    </span>
+                  )}
+                  <span className="click-hint" aria-hidden="true">
+                    Click to view
                   </span>
-                )}
+                </div>
               </header>
               <p className="project-description">{project.description}</p>
               {project.topics.length > 0 && (
@@ -149,19 +164,11 @@ const Projects = () => {
                       rel="noopener noreferrer"
                       className="project-link demo"
                       aria-label={`View live demo of ${project.name}`}
+                      onClick={(e) => e.stopPropagation()}
                     >
                       Demo
                     </a>
                   )}
-                  <a 
-                    href={project.html_url} 
-                    target="_blank" 
-                    rel="noopener noreferrer"
-                    className="project-link code"
-                    aria-label={`View source code of ${project.name} on GitHub`}
-                  >
-                    Code
-                  </a>
                 </div>
               </footer>
             </motion.article>

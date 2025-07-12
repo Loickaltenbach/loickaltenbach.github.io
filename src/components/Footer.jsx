@@ -9,7 +9,7 @@ const Footer = () => {
         <div className="footer-content">
           <div className="footer-section">
             <h4>Loïc Kaltenbach</h4>
-            <p>React, React Native, Flutter, Django Developer</p>
+            <p>React, React Native, Django Developer</p>
           </div>
           <div className="footer-section">
             <h4>Connect</h4>

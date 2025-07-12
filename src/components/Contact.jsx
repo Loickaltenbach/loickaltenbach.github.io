@@ -301,7 +301,7 @@ const Contact = () => {
           </div>
           <div className="contact-item">
             <span className="contact-label">Specialization:</span>
-            <span className="contact-value">React, React Native, Flutter, Django</span>
+            <span className="contact-value">React, React Native, Django</span>
           </div>
         </motion.address>
       </div>

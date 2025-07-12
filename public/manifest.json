@@ -1,7 +1,7 @@
 {
   "name": "Loïc Kaltenbach - Full Stack Developer Portfolio",
   "short_name": "LK Portfolio",
-  "description": "Full Stack Developer specializing in React, React Native, Flutter, and Django. Based in Germany.",
+  "description": "Full Stack Developer specializing in React, React Native, and Django. Based in Germany.",
   "start_url": "/portfolio/",
   "display": "standalone",
   "background_color": "#ffffff",

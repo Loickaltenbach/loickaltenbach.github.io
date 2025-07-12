@@ -19,7 +19,7 @@ const Hero = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.4 }}
         >
-          React, React Native, Flutter, Django Developer based in Germany
+          React, React Native, Django Developer based in Germany
         </motion.p>
         <motion.div 
           className="hero-cta"
@@ -45,7 +45,6 @@ const Hero = () => {
       >
         <div className="floating-elements">
           <div className="floating-element react" aria-label="React technology"></div>
-          <div className="floating-element flutter" aria-label="Flutter technology"></div>
           <div className="floating-element django" aria-label="Django technology"></div>
         </div>
       </motion.div>
