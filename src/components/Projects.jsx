@@ -27,7 +27,6 @@ const Projects = () => {
             html_url: repo.html_url,
             homepage: repo.homepage,
             language: repo.language,
-            stars: repo.stargazers_count,
             topics: repo.topics || []
           }))
         
@@ -136,7 +135,11 @@ const Projects = () => {
               )}
               <footer className="project-footer">
                 <div className="project-stats">
-                  <span className="stars" aria-label={`${project.stars} stars on GitHub`}>⭐ {project.stars}</span>
+                    {project.topics.length > 0 && (
+                        <span className="topics-count" aria-label={`${project.topics.length} technologies used`}>
+                        {project.topics.length} Techs
+                        </span>
+                    )}
                 </div>
                 <div className="project-links">
                   {project.homepage && (

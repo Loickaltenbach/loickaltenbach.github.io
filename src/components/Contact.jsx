@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
 import AntiSpam from '../utils/antiSpam'
+import { motion } from 'framer-motion'
 import './Contact.css'
 
 const Contact = () => {
