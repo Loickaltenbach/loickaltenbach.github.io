@@ -59,11 +59,12 @@
   position: absolute;
   bottom: -10px;
   left: 0;
-  width: 100px;
+  right: 0;
+  width: 100%;
   height: 4px;
   background: linear-gradient(90deg, #ff6b6b, #4ecdc4, #45b7d1);
   border-radius: 2px;
-  animation: underlineGlow 3s ease-in-out infinite;
+  animation: underlineGlow 10s ease-in-out infinite;
 }
 
 @keyframes underlineGlow {
@@ -192,7 +193,6 @@
   transform: translate(-50%, -50%);
   width: 20px;
   height: 20px;
-  background: rgba(255, 255, 255, 0.3);
   border-radius: 50%;
   animation: pulse 2s ease-in-out infinite;
 }
@@ -223,6 +223,13 @@
 @media (max-width: 768px) {
   .hero-content {
     padding: 0 1rem;
+  }
+  
+  .hero-title::after {
+    left: 50px;
+    height: 3px;
+    width: 70%;
+    bottom: -8px;
   }
   
   .floating-element {

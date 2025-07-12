@@ -99,7 +99,6 @@ button {
 }
 
 .nav-links button:hover {
-  background: #2563eb;
   color: white;
   transform: translateY(-2px);
 }
