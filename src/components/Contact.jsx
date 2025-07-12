@@ -21,7 +21,7 @@ const Contact = () => {
   const [accessGranted, setAccessGranted] = useState(false)
   
   // Email obfusqué - ne sera pas visible dans le code source final
-  const obfuscatedEmail = 'bG9pYy5rYWx0ZW5iYWNoQGdtYWlsLmNvbQ==ABCDE' // base64 + random chars
+  const obfuscatedEmail = 'bG9pY2thbHRlbmJhY2g0QGdtYWlsLmNvbQ==XYZAB' // base64 + random chars
 
   useEffect(() => {
     // Vérification d'accès
