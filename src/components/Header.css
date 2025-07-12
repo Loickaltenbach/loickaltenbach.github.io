@@ -10,6 +10,15 @@
   padding: 1rem 0;
 }
 
+button {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  font-size: 1rem;
+  color: #2563eb;
+  transition: color 0.3s ease;
+}
+
 .nav {
   display: flex;
   justify-content: space-between;

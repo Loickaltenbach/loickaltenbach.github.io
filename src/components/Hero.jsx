@@ -19,7 +19,16 @@ const Hero = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.4 }}
         >
-          React, React Native, Django Developer based in Germany
+          React, React Native, Django Developer working at{' '}
+          <a 
+            href="https://www.actimage.de/" 
+            target="_blank" 
+            rel="noopener noreferrer"
+            className="company-link"
+            aria-label="Visit Actimage GmbH website"
+          >
+            Actimage GmbH
+          </a>
         </motion.p>
         <motion.div 
           className="hero-cta"
