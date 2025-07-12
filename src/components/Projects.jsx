@@ -67,7 +67,7 @@ const Projects = () => {
     return (
       <section id="projects" className="projects">
         <div className="container">
-          <h2>My Personal Projects</h2>
+          <h2>My latest personal projects</h2>
           <div className="loading">Loading projects...</div>
         </div>
       </section>
@@ -78,7 +78,7 @@ const Projects = () => {
     return (
       <section id="projects" className="projects">
         <div className="container">
-          <h2>My Personal Projects</h2>
+          <h2>My latest personal projects</h2>
           <div className="error">Error: {error}</div>
         </div>
       </section>
@@ -95,7 +95,7 @@ const Projects = () => {
           transition={{ duration: 0.6 }}
           viewport={{ once: true }}
         >
-          My Personal Projects
+          My latest personal projects
         </motion.h2>
         <motion.div 
           className="projects-grid"
