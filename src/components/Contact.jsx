@@ -297,7 +297,7 @@ const Contact = () => {
         >
           <div className="contact-item">
             <span className="contact-label">Location:</span>
-            <span className="contact-value">Germany</span>
+            <span className="contact-value">France</span>
           </div>
           <div className="contact-item">
             <span className="contact-label">Specialization:</span>
