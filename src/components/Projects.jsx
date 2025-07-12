@@ -28,8 +28,7 @@ const Projects = () => {
         
         // Filter and obfuscate project data
         const filteredProjects = data
-          .filter(repo => !repo.fork && !repo.private && repo.size > 0)
-          .slice(0, 12)
+          .filter(repo => !repo.fork && !repo.private)
           .map(repo => ({
             id: repo.id,
             name: repo.name,
