@@ -18,16 +18,20 @@ const Projects = () => {
         const data = await response.json()
         
         // Filter out forks and private repos, and add some custom data
+        // Temporary: Show all repos to debug
         const filteredProjects = data
-          .filter(repo => !repo.fork && !repo.private)
           .map(repo => ({
             id: repo.id,
             name: repo.name,
             description: repo.description || 'No description available',
             html_url: repo.html_url,
             homepage: repo.homepage,
-            language: repo.language,
-            topics: repo.topics || []
+            language: repo.language || 'CSS',
+            topics: repo.topics || [],
+            // Add debug info
+            isFork: repo.fork,
+            isPrivate: repo.private,
+            size: repo.size
           }))
         
         setProjects(filteredProjects)
