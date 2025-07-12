@@ -1,0 +1,190 @@
+.projects {
+  padding: 5rem 0;
+  background: #f8fafc;
+}
+
+.projects h2 {
+  text-align: center;
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 3rem;
+  color: #1e293b;
+}
+
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.project-card {
+  background: white;
+  border-radius: 1rem;
+  padding: 1.5rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  border: 1px solid #e2e8f0;
+}
+
+.project-card:hover {
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+}
+
+.project-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.project-header h3 {
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: #1e293b;
+  text-transform: capitalize;
+}
+
+.language-tag {
+  padding: 0.25rem 0.75rem;
+  border-radius: 1rem;
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: white;
+}
+
+.language-tag.javascript {
+  background: #f7df1e;
+  color: #000;
+}
+
+.language-tag.typescript {
+  background: #3178c6;
+}
+
+.language-tag.python {
+  background: #3776ab;
+}
+
+.language-tag.dart {
+  background: #0175c2;
+}
+
+.language-tag.html {
+  background: #e34f26;
+}
+
+.language-tag.css {
+  background: #1572b6;
+}
+
+.language-tag.vue {
+  background: #4fc08d;
+}
+
+.language-tag.react {
+  background: #61dafb;
+  color: #000;
+}
+
+.project-description {
+  color: #64748b;
+  margin-bottom: 1rem;
+  line-height: 1.6;
+}
+
+.project-topics {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.topic-tag {
+  padding: 0.25rem 0.5rem;
+  background: #e2e8f0;
+  color: #475569;
+  border-radius: 0.5rem;
+  font-size: 0.8rem;
+}
+
+.project-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.project-stats {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.stars {
+  color: #64748b;
+  font-size: 0.9rem;
+}
+
+.project-links {
+  display: flex;
+  gap: 1rem;
+}
+
+.project-link {
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  font-size: 0.9rem;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.project-link.demo {
+  background: #2563eb;
+  color: white;
+}
+
+.project-link.demo:hover {
+  background: #1d4ed8;
+  transform: translateY(-2px);
+}
+
+.project-link.code {
+  background: #64748b;
+  color: white;
+}
+
+.project-link.code:hover {
+  background: #475569;
+  transform: translateY(-2px);
+}
+
+.loading, .error {
+  text-align: center;
+  padding: 2rem;
+  font-size: 1.1rem;
+}
+
+.error {
+  color: #dc2626;
+}
+
+@media (max-width: 768px) {
+  .projects {
+    padding: 3rem 0;
+  }
+  
+  .projects-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+  
+  .project-card {
+    padding: 1rem;
+  }
+  
+  .project-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+}
