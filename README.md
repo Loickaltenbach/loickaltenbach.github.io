@@ -37,7 +37,10 @@ Dynamic showcase of my GitHub repositories with:
 Simple contact section with:
 - Professional email contact
 - Location and specialization info
-- Mailto functionality
+- **Anti-spam protected contact form**
+- Security challenges and rate limiting
+- Honeypot and content validation
+- Mailto functionality with fallback
 
 ## 🚀 Getting Started
 
@@ -99,10 +102,14 @@ portfolio/
 │   │   ├── Hero.css
 │   │   ├── Projects.jsx      # Projects showcase
 │   │   ├── Projects.css
-│   │   ├── Contact.jsx       # Contact section
+│   │   ├── Contact.jsx       # Contact section with anti-spam
 │   │   ├── Contact.css
 │   │   ├── Footer.jsx        # Footer
 │   │   └── Footer.css
+│   ├── utils/
+│   │   ├── seo.js           # SEO utilities
+│   │   ├── antiSpam.js      # Anti-spam protection
+│   │   └── contactSecurity.js # Enhanced security features
 │   ├── App.jsx
 │   ├── App.css
 │   ├── index.css
@@ -112,7 +119,9 @@ portfolio/
 ├── index.html
 ├── package.json
 ├── vite.config.js
-└── README.md
+├── README.md
+├── SEO_CHECKLIST.md
+└── ANTI_SPAM_DOCUMENTATION.md
 ```
 
 ## 🎨 Customization
