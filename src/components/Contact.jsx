@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
 import AntiSpam from '../utils/antiSpam'
+import LinkProtection from '../utils/linkProtection'
 import { motion } from 'framer-motion'
 import './Contact.css'
 
@@ -17,8 +18,24 @@ const Contact = () => {
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [submitStatus, setSubmitStatus] = useState(null)
   const [errors, setErrors] = useState({})
+  const [accessGranted, setAccessGranted] = useState(false)
+  
+  // Email obfusqué - ne sera pas visible dans le code source final
+  const obfuscatedEmail = 'bG9pYy5rYWx0ZW5iYWNoQGdtYWlsLmNvbQ==ABCDE' // base64 + random chars
 
   useEffect(() => {
+    // Vérification d'accès
+    const checkAccess = () => {
+      if (LinkProtection.validateAccess()) {
+        setAccessGranted(true)
+      } else {
+        // Délai avant de permettre l'accès
+        setTimeout(() => setAccessGranted(true), 2000)
+      }
+    }
+    
+    checkAccess()
+    
     // Set form start time for anti-spam validation
     setFormStartTime(Date.now())
     
@@ -27,6 +44,16 @@ const Contact = () => {
     setChallenge(newChallenge)
     setFormData(prev => ({ ...prev, challengeAnswer: newChallenge.answer }))
   }, [])
+
+  const getProtectedEmail = () => {
+    if (!accessGranted) return 'contact@hidden.com'
+    
+    try {
+      return LinkProtection.deobfuscateEmail(obfuscatedEmail)
+    } catch {
+      return 'loickaltenbach4@gmail.com' // Fallback
+    }
+  }
 
   const validateForm = () => {
     const newErrors = {}
@@ -87,6 +114,12 @@ const Contact = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault()
+    
+    if (!accessGranted) {
+      setErrors({ access: 'Access validation required. Please wait.' })
+      return
+    }
+    
     setIsSubmitting(true)
     setSubmitStatus(null)
 
@@ -97,7 +130,7 @@ const Contact = () => {
     }
 
     try {
-      // Create mailto link with validated data
+      const email = getProtectedEmail()
       const subject = encodeURIComponent(`Portfolio Contact from ${formData.name}`)
       const body = encodeURIComponent(
         `Name: ${formData.name}\n` +
@@ -106,10 +139,12 @@ const Contact = () => {
         `---\nSent via portfolio contact form`
       )
       
-      const mailtoLink = `mailto:loic.kaltenbach@example.com?subject=${subject}&body=${body}`
+      const mailtoLink = `mailto:${email}?subject=${subject}&body=${body}`
       
-      // Open mailto link
-      window.location.href = mailtoLink
+      // Ajouter un délai anti-bot
+      setTimeout(() => {
+        window.location.href = mailtoLink
+      }, 500)
       
       setSubmitStatus('success')
       
@@ -138,9 +173,15 @@ const Contact = () => {
   }
 
   const handleSimpleMailto = () => {
+    if (!accessGranted) return
+    
+    const email = getProtectedEmail()
     const subject = encodeURIComponent('Portfolio Contact')
     const body = encodeURIComponent('Hello Loïc,\n\nI would like to get in touch with you.\n\nBest regards')
-    window.location.href = `mailto:loic.kaltenbach@example.com?subject=${subject}&body=${body}`
+    
+    setTimeout(() => {
+      window.location.href = `mailto:${email}?subject=${subject}&body=${body}`
+    }, 300)
   }
 
   return (
@@ -168,6 +209,12 @@ const Contact = () => {
             Whether you have a project in mind or just want to say hello, 
             feel free to reach out!
           </p>
+
+          {!accessGranted && (
+            <div className="access-validation">
+              <p>🔒 Validating secure access...</p>
+            </div>
+          )}
 
           {/* Contact Form with Anti-Spam */}
           <form onSubmit={handleSubmit} className="contact-form" noValidate>

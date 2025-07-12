@@ -1,42 +1,47 @@
 import { useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
 import { SEOUtils } from '../utils/seo'
+import LinkProtection from '../utils/linkProtection'
 import './Projects.css'
 
 const Projects = () => {
   const [projects, setProjects] = useState([])
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState(null)
+  const [accessValidated, setAccessValidated] = useState(false)
 
   useEffect(() => {
     const fetchProjects = async () => {
       try {
+        // Validation d'accès avant de fetcher
+        if (!LinkProtection.validateAccess()) {
+          setTimeout(() => setAccessValidated(true), 1500)
+        } else {
+          setAccessValidated(true)
+        }
+        
         const response = await fetch('https://api.github.com/users/Loickaltenbach/repos')
         if (!response.ok) {
           throw new Error('Failed to fetch projects')
         }
         const data = await response.json()
         
-        // Filter out forks and private repos, and add some custom data
-        // Temporary: Show all repos to debug
+        // Filter and obfuscate project data
         const filteredProjects = data
+          .filter(repo => !repo.fork && !repo.private && repo.size > 0)
+          .slice(0, 12)
           .map(repo => ({
             id: repo.id,
             name: repo.name,
             description: repo.description || 'No description available',
-            html_url: repo.html_url,
-            homepage: repo.homepage,
+            // Obfusquer les URLs
+            html_url: LinkProtection.encryptLink(repo.html_url),
+            homepage: repo.homepage ? LinkProtection.encryptLink(repo.homepage) : null,
             language: repo.language || 'CSS',
-            topics: repo.topics || [],
-            // Add debug info
-            isFork: repo.fork,
-            isPrivate: repo.private,
-            size: repo.size
+            topics: repo.topics || []
           }))
         
         setProjects(filteredProjects)
-        
-        // Add structured data for SEO
         SEOUtils.addProjectStructuredData(filteredProjects)
       } catch (err) {
         setError(err.message)
@@ -47,6 +52,39 @@ const Projects = () => {
 
     fetchProjects()
   }, [])
+
+  const handleProjectClick = (encryptedUrl) => {
+    if (!accessValidated) {
+      alert('Please wait for access validation...')
+      return
+    }
+    
+    try {
+      const actualUrl = LinkProtection.decryptLink(encryptedUrl)
+      
+      // Ajouter un délai anti-bot
+      setTimeout(() => {
+        window.open(actualUrl, '_blank', 'noopener,noreferrer')
+      }, 200)
+    } catch (error) {
+      console.warn('Link access denied')
+    }
+  }
+
+  const handleDemoClick = (e, encryptedUrl) => {
+    e.stopPropagation()
+    
+    if (!accessValidated || !encryptedUrl) return
+    
+    try {
+      const actualUrl = LinkProtection.decryptLink(encryptedUrl)
+      setTimeout(() => {
+        window.open(actualUrl, '_blank', 'noopener,noreferrer')
+      }, 200)
+    } catch (error) {
+      console.warn('Demo link access denied')
+    }
+  }
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -101,6 +139,13 @@ const Projects = () => {
         >
           My latest personal projects
         </motion.h2>
+        
+        {!accessValidated && (
+          <div className="access-loading">
+            <p>Validating access...</p>
+          </div>
+        )}
+        
         <motion.div 
           className="projects-grid"
           variants={containerVariants}
@@ -118,16 +163,16 @@ const Projects = () => {
               whileHover={{ y: -5, scale: 1.02 }}
               transition={{ duration: 0.2 }}
               role="listitem"
-              onClick={() => window.open(project.html_url, '_blank', 'noopener,noreferrer')}
-              style={{ cursor: 'pointer' }}
-              tabIndex={0}
+              onClick={() => handleProjectClick(project.html_url)}
+              style={{ cursor: accessValidated ? 'pointer' : 'not-allowed' }}
+              tabIndex={accessValidated ? 0 : -1}
               onKeyDown={(e) => {
-                if (e.key === 'Enter' || e.key === ' ') {
+                if ((e.key === 'Enter' || e.key === ' ') && accessValidated) {
                   e.preventDefault()
-                  window.open(project.html_url, '_blank', 'noopener,noreferrer')
+                  handleProjectClick(project.html_url)
                 }
               }}
-              aria-label={`View ${project.name} project on GitHub`}
+              aria-label={`View ${project.name} project`}
             >
               <header className="project-header">
                 <h3>{project.name}</h3>
@@ -138,7 +183,7 @@ const Projects = () => {
                     </span>
                   )}
                   <span className="click-hint" aria-hidden="true">
-                    Click to view
+                    {accessValidated ? 'Click to view' : 'Loading...'}
                   </span>
                 </div>
               </header>
@@ -161,17 +206,14 @@ const Projects = () => {
                     )}
                 </div>
                 <div className="project-links">
-                  {project.homepage && (
-                    <a 
-                      href={project.homepage} 
-                      target="_blank" 
-                      rel="noopener noreferrer"
+                  {project.homepage && accessValidated && (
+                    <button
                       className="project-link demo"
+                      onClick={(e) => handleDemoClick(e, project.homepage)}
                       aria-label={`View live demo of ${project.name}`}
-                      onClick={(e) => e.stopPropagation()}
                     >
                       Demo
-                    </a>
+                    </button>
                   )}
                 </div>
               </footer>

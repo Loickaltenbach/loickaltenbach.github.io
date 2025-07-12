@@ -66,6 +66,17 @@
   opacity: 0.9;
 }
 
+.access-validation {
+  text-align: center;
+  padding: 1rem;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 1rem;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  margin-bottom: 2rem;
+  color: #93c5fd;
+  font-style: italic;
+}
+
 /* Contact Form Styles */
 .contact-form {
   max-width: 600px;
