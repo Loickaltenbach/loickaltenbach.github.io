@@ -3,9 +3,34 @@
   display: flex;
   align-items: center;
   position: relative;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
   color: white;
   overflow: hidden;
+}
+
+.hero::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: 
+    radial-gradient(circle at 20% 50%, rgba(120, 119, 198, 0.3) 0%, transparent 50%),
+    radial-gradient(circle at 80% 20%, rgba(255, 119, 198, 0.3) 0%, transparent 50%),
+    radial-gradient(circle at 40% 80%, rgba(120, 198, 255, 0.3) 0%, transparent 50%);
+  animation: gradientShift 10s ease-in-out infinite;
+}
+
+@keyframes gradientShift {
+  0%, 100% {
+    opacity: 1;
+    transform: translateX(0px) translateY(0px);
+  }
+  50% {
+    opacity: 0.8;
+    transform: translateX(10px) translateY(-10px);
+  }
 }
 
 .hero-content {
@@ -18,10 +43,38 @@
 }
 
 .hero-title {
-  font-size: clamp(2.5rem, 5vw, 4rem);
-  font-weight: 700;
+  font-size: clamp(2.5rem, 5vw, 4.5rem);
+  font-weight: 800;
   margin-bottom: 1rem;
-  line-height: 1.2;
+  line-height: 1.1;
+  background: linear-gradient(135deg, #ffffff 0%, #f0f9ff 50%, #e0f2fe 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  position: relative;
+}
+
+.hero-title::after {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: 0;
+  width: 100px;
+  height: 4px;
+  background: linear-gradient(90deg, #ff6b6b, #4ecdc4, #45b7d1);
+  border-radius: 2px;
+  animation: underlineGlow 3s ease-in-out infinite;
+}
+
+@keyframes underlineGlow {
+  0%, 100% {
+    box-shadow: 0 0 10px rgba(255, 107, 107, 0.5);
+    transform: scaleX(1);
+  }
+  50% {
+    box-shadow: 0 0 20px rgba(78, 205, 196, 0.8);
+    transform: scaleX(1.2);
+  }
 }
 
 .hero-subtitle {
@@ -49,22 +102,41 @@
 }
 
 .cta-button {
-  padding: 1rem 2rem;
-  background: rgba(255, 255, 255, 0.2);
+  padding: 1.2rem 2.5rem;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.2) 0%, rgba(255, 255, 255, 0.1) 100%);
   color: white;
-  border: 2px solid white;
+  border: 2px solid rgba(255, 255, 255, 0.3);
   border-radius: 50px;
   font-size: 1.1rem;
   font-weight: 600;
-  transition: all 0.3s ease;
-  backdrop-filter: blur(10px);
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  backdrop-filter: blur(20px);
+  position: relative;
+  overflow: hidden;
+}
+
+.cta-button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.5s ease;
+}
+
+.cta-button:hover::before {
+  left: 100%;
 }
 
 .cta-button:hover {
-  background: white;
-  color: #667eea;
-  transform: translateY(-3px);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.3) 0%, rgba(255, 255, 255, 0.2) 100%);
+  border-color: rgba(255, 255, 255, 0.6);
+  transform: translateY(-3px) scale(1.05);
+  box-shadow: 
+    0 15px 35px rgba(0, 0, 0, 0.3),
+    0 0 30px rgba(255, 255, 255, 0.3);
 }
 
 .hero-background {
@@ -86,40 +158,65 @@
 
 .floating-element {
   position: absolute;
-  width: 60px;
-  height: 60px;
   border-radius: 50%;
   animation: float 6s ease-in-out infinite;
-  opacity: 0.3;
+  backdrop-filter: blur(10px);
 }
 
 .floating-element.react {
-  background: #61dafb;
-  top: 20%;
+  width: 80px;
+  height: 80px;
+  background: linear-gradient(135deg, #61dafb, #21759b);
+  top: 15%;
   left: 10%;
   animation-delay: 0s;
-}
-
-.floating-element.flutter {
-  background: #02569b;
-  top: 60%;
-  right: 10%;
-  animation-delay: 2s;
+  box-shadow: 0 0 30px rgba(97, 218, 251, 0.5);
 }
 
 .floating-element.django {
-  background: #092e20;
+  width: 70px;
+  height: 70px;
+  background: linear-gradient(135deg, #092e20, #0c4b33);
   bottom: 20%;
-  left: 20%;
-  animation-delay: 4s;
+  right: 15%;
+  animation-delay: 3s;
+  box-shadow: 0 0 25px rgba(9, 46, 32, 0.5);
+}
+
+/* Add more floating elements for visual interest */
+.floating-element::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 20px;
+  height: 20px;
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  animation: pulse 2s ease-in-out infinite;
 }
 
 @keyframes float {
   0%, 100% {
-    transform: translateY(0px) rotate(0deg);
+    transform: translateY(0px) rotate(0deg) scale(1);
+  }
+  33% {
+    transform: translateY(-15px) rotate(120deg) scale(1.1);
+  }
+  66% {
+    transform: translateY(-10px) rotate(240deg) scale(0.9);
+  }
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 0.3;
+    transform: translate(-50%, -50%) scale(1);
   }
   50% {
-    transform: translateY(-20px) rotate(180deg);
+    opacity: 0.8;
+    transform: translate(-50%, -50%) scale(1.5);
   }
 }
 
