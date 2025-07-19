@@ -8,11 +8,11 @@ const Footer = () => {
       <div className="container">
         <div className="footer-content">
           <div className="footer-section">
-            <h4>Loïc Kaltenbach</h4>
+            <h2>Loïc Kaltenbach</h2>
             <p>React, React Native, Django Developer</p>
           </div>
           <div className="footer-section">
-            <h4>Connect</h4>
+            <h3>Connect</h3>
             <div className="social-links">
               <a 
                 href="https://github.com/Loickaltenbach" 

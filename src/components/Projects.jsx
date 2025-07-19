@@ -65,7 +65,7 @@ const Projects = () => {
       setTimeout(() => {
         window.open(actualUrl, '_blank', 'noopener,noreferrer')
       }, 200)
-    } catch (error) {
+    } catch {
       console.warn('Link access denied')
     }
   }
@@ -80,7 +80,7 @@ const Projects = () => {
       setTimeout(() => {
         window.open(actualUrl, '_blank', 'noopener,noreferrer')
       }, 200)
-    } catch (error) {
+    } catch {
       console.warn('Demo link access denied')
     }
   }
@@ -161,7 +161,6 @@ const Projects = () => {
               variants={cardVariants}
               whileHover={{ y: -5, scale: 1.02 }}
               transition={{ duration: 0.2 }}
-              role="listitem"
               onClick={() => handleProjectClick(project.html_url)}
               style={{ cursor: accessValidated ? 'pointer' : 'not-allowed' }}
               tabIndex={accessValidated ? 0 : -1}
@@ -172,6 +171,7 @@ const Projects = () => {
                 }
               }}
               aria-label={`View ${project.name} project`}
+              role='none'
             >
               <header className="project-header">
                 <h3>{project.name}</h3>
