@@ -33,11 +33,51 @@ Dynamic showcase of my GitHub repositories with:
 - Star counts
 - Live demo and code links
 
+
 ### 📞 Contact
 Simple contact section with:
 - Professional email contact
 - Location and specialization info
 - **Anti-spam protected contact form**
+
+---
+
+## 📊 Bundle Analysis & Unused Code Audit
+
+### 1. Bundle Analysis
+To analyze your bundle and find unused code, run:
+
+```sh
+npm install vite-plugin-visualizer --save-dev
+npx vite --config vite.visualizer.config.js build
+```
+
+This will generate a `stats.html` file in your project root. Open it to see which modules are taking up space and identify unused code.
+
+### 2. Remove Unused Code & Lazy Load Components
+- Check the `stats.html` output for large modules you don't use.
+- Remove unused imports, components, or libraries from your codebase.
+- Use `React.lazy` and `Suspense` to lazy-load components that are not needed on initial render.
+
+#### Example: Lazy Loading a Component
+
+```jsx
+import React, { Suspense } from 'react'
+const Contact = React.lazy(() => import('./components/Contact'))
+
+function App() {
+  return (
+    <Suspense fallback={<div>Loading...</div>}>
+      <Contact />
+    </Suspense>
+  )
+}
+```
+
+Repeat for other non-critical components.
+
+### 3. Efficient Cache Policy
+GitHub Pages does not allow custom cache headers, but Vite's hashed filenames ensure users get the latest assets after each deploy.
 - Security challenges and rate limiting
 - Honeypot and content validation
 - Mailto functionality with fallback
