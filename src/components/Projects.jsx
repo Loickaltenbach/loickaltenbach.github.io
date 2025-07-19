@@ -171,7 +171,6 @@ const Projects = () => {
                 }
               }}
               aria-label={`View ${project.name} project`}
-              role='none'
             >
               <header className="project-header">
                 <h3>{project.name}</h3>
