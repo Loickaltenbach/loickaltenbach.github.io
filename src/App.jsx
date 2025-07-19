@@ -1,11 +1,10 @@
-import { useEffect, Suspense, lazy } from 'react'
+import { useEffect } from 'react'
 import Header from './components/Header'
+import Hero from './components/Hero'
+import Projects from './components/Projects'
+import Contact from './components/Contact'
+import Footer from './components/Footer'
 import './App.css'
-
-const Hero = lazy(() => import('./components/Hero'))
-const Projects = lazy(() => import('./components/Projects'))
-const Contact = lazy(() => import('./components/Contact'))
-const Footer = lazy(() => import('./components/Footer'))
 
 function App() {
   useEffect(() => {
@@ -13,9 +12,9 @@ function App() {
     const handleMouseMove = () => {
       sessionStorage.setItem('mouseActivity', 'true')
     }
-    
+
     document.addEventListener('mousemove', handleMouseMove)
-    
+
     return () => {
       document.removeEventListener('mousemove', handleMouseMove)
     }
@@ -25,15 +24,11 @@ function App() {
     <div className="App">
       <Header />
       <main role="main">
-        <Suspense fallback={<div>Loading...</div>}>
-          <Hero />
-          <Projects />
-          <Contact />
-        </Suspense>
+        <Hero />
+        <Projects />
+        <Contact />
       </main>
-      <Suspense fallback={null}>
-        <Footer />
-      </Suspense>
+      <Footer />
     </div>
   )
 }
