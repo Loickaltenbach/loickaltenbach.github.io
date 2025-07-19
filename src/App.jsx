@@ -1,10 +1,11 @@
-import { useEffect } from 'react'
+import { useEffect, Suspense, lazy } from 'react'
 import Header from './components/Header'
-import Hero from './components/Hero'
-import Projects from './components/Projects'
-import Contact from './components/Contact'
-import Footer from './components/Footer'
 import './App.css'
+
+const Hero = lazy(() => import('./components/Hero'))
+const Projects = lazy(() => import('./components/Projects'))
+const Contact = lazy(() => import('./components/Contact'))
+const Footer = lazy(() => import('./components/Footer'))
 
 function App() {
   useEffect(() => {
@@ -24,11 +25,15 @@ function App() {
     <div className="App">
       <Header />
       <main role="main">
-        <Hero />
-        <Projects />
-        <Contact />
+        <Suspense fallback={<div>Loading...</div>}>
+          <Hero />
+          <Projects />
+          <Contact />
+        </Suspense>
       </main>
-      <Footer />
+      <Suspense fallback={null}>
+        <Footer />
+      </Suspense>
     </div>
   )
 }
