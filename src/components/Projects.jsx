@@ -145,7 +145,7 @@ const Projects = () => {
           </div>
         )}
         
-        <motion.div 
+        <motion.ul 
           className="projects-grid"
           variants={containerVariants}
           initial="hidden"
@@ -155,7 +155,7 @@ const Projects = () => {
           aria-label="List of my projects"
         >
           {projects.map((project) => (
-            <motion.article 
+            <motion.li 
               key={project.id} 
               className="project-card"
               variants={cardVariants}
@@ -171,6 +171,7 @@ const Projects = () => {
                 }
               }}
               aria-label={`View ${project.name} project`}
+              role="listitem"
             >
               <header className="project-header">
                 <h3>{project.name}</h3>
@@ -215,9 +216,9 @@ const Projects = () => {
                   )}
                 </div>
               </footer>
-            </motion.article>
+            </motion.li>
           ))}
-        </motion.div>
+        </motion.ul>
       </div>
     </section>
   )
