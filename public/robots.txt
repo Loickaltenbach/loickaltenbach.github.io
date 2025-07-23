@@ -2,7 +2,7 @@ User-agent: *
 Allow: /
 
 # Sitemap
-Sitemap: https://Loickaltenbach.github.io/sitemap.xml
+Sitemap: https://loickaltenbach.github.io/sitemap.xml
 
 # Crawl-delay
 Crawl-delay: 1

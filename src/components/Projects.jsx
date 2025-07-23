@@ -20,7 +20,7 @@ const Projects = () => {
           setAccessValidated(true)
         }
         
-        const response = await fetch('https://api.github.com/users/Loickaltenbach/repos')
+        const response = await fetch('https://api.github.com/users/loickaltenbach/repos')
         if (!response.ok) {
           throw new Error('Failed to fetch projects')
         }

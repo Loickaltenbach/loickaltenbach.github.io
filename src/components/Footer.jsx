@@ -15,7 +15,7 @@ const Footer = () => {
             <h3>Connect</h3>
             <div className="social-links">
               <a 
-                href="https://github.com/Loickaltenbach" 
+                href="https://github.com/loickaltenbach" 
                 target="_blank" 
                 rel="noopener noreferrer"
                 aria-label="GitHub"

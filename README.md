@@ -92,7 +92,7 @@ GitHub Pages does not allow custom cache headers, but Vite's hashed filenames en
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/Loickaltenbach/portfolio.git
+   git clone https://github.com/loickaltenbach/portfolio.git
    cd portfolio
    ```
 
@@ -197,7 +197,7 @@ For detailed SEO information, see `SEO_CHECKLIST.md`
 ## 📧 Contact
 
 Loïc Kaltenbach - [Your Email]
-Project Link: [https://github.com/Loickaltenbach/portfolio](https://github.com/Loickaltenbach/portfolio)
+Project Link: [https://github.com/loickaltenbach/portfolio](https://github.com/loickaltenbach/portfolio)
 
 ## 📄 License
 
