@@ -63,7 +63,9 @@ const Projects = () => {
       
       // Ajouter un délai anti-bot
       setTimeout(() => {
-        window.open(actualUrl, '_blank', 'noopener,noreferrer')
+        if (typeof window !== 'undefined') {
+          window.open(actualUrl, '_blank', 'noopener,noreferrer')
+        }
       }, 200)
     } catch {
       console.warn('Link access denied')
@@ -78,7 +80,9 @@ const Projects = () => {
     try {
       const actualUrl = LinkProtection.decryptLink(encryptedUrl)
       setTimeout(() => {
-        window.open(actualUrl, '_blank', 'noopener,noreferrer')
+        if (typeof window !== 'undefined') {
+          window.open(actualUrl, '_blank', 'noopener,noreferrer')
+        }
       }, 200)
     } catch {
       console.warn('Demo link access denied')

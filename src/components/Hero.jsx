@@ -38,7 +38,11 @@ const Hero = () => {
         >
           <button 
             className="cta-button"
-            onClick={() => document.getElementById('projects').scrollIntoView({ behavior: 'smooth' })}
+            onClick={() => {
+              if (typeof window !== 'undefined' && document.getElementById('projects')) {
+                document.getElementById('projects').scrollIntoView({ behavior: 'smooth' });
+              }
+            }}
             aria-label="View my projects and work"
           >
             View My Work

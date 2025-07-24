@@ -143,7 +143,9 @@ const Contact = () => {
       
       // Ajouter un délai anti-bot
       setTimeout(() => {
-        window.location.href = mailtoLink
+        if (typeof window !== 'undefined') {
+          window.location.href = mailtoLink
+        }
       }, 500)
       
       setSubmitStatus('success')
@@ -180,7 +182,9 @@ const Contact = () => {
     const body = encodeURIComponent('Hello Loïc,\n\nI would like to get in touch with you.\n\nBest regards')
     
     setTimeout(() => {
-      window.location.href = `mailto:${email}?subject=${subject}&body=${body}`
+      if (typeof window !== 'undefined') {
+        window.location.href = `mailto:${email}?subject=${subject}&body=${body}`
+      }
     }, 300)
   }
 

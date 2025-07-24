@@ -84,7 +84,10 @@ class LinkProtection {
 
   static checkMouseMovement() {
     // Vérifie si la souris a bougé (stocké dans sessionStorage)
-    return sessionStorage.getItem('mouseActivity') === 'true'
+    if (typeof window !== 'undefined' && window.sessionStorage) {
+      return sessionStorage.getItem('mouseActivity') === 'true'
+    }
+    return false;
   }
 
   static checkJavaScriptEnabled() {
@@ -92,16 +95,21 @@ class LinkProtection {
   }
 
   static checkScreenSize() {
-    return window.screen.width > 100 && window.screen.height > 100
+    if (typeof window !== 'undefined' && window.screen) {
+      return window.screen.width > 100 && window.screen.height > 100
+    }
+    return false;
   }
 
   static checkReferrer() {
     // Permet les accès directs et depuis des domaines légitimes
-    const referrer = document.referrer
-    if (!referrer) return true // Accès direct autorisé
-    
-    const allowedDomains = ['github.io', 'localhost', 'vercel.app']
-    return allowedDomains.some(domain => referrer.includes(domain))
+    if (typeof document !== 'undefined') {
+      const referrer = document.referrer
+      if (!referrer) return true // Accès direct autorisé
+      const allowedDomains = ['github.io', 'localhost', 'vercel.app']
+      return allowedDomains.some(domain => referrer.includes(domain))
+    }
+    return false;
   }
 }
 
