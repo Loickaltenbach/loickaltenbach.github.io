@@ -24,4 +24,4 @@ dist-ssr
 *.sw?
 
 stats.html
-package.lock.json
+package-lock.json
