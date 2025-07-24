@@ -9,16 +9,15 @@
     "build": "vite build",
     "lint": "eslint .",
     "preview": "vite preview",
-    "deploy": "gh-pages -d dist/client",
-    "postbuild": "cp dist/client/index.html dist/client/404.html",
-    "predeploy": "npm run build && npm run prerender && npm run postbuild"
+    "deploy": "gh-pages -d dist",
+    "predeploy": "npm run build"
   },
   "dependencies": {
     "framer-motion": "^12.23.3",
     "gh-pages": "^6.3.0",
     "react": "^19.1.0",
-    "react-dom": "^19.1.0",
-    "vite-plugin-ssr": "^0.4.142"
+    "react-dom": "^19.1.0"
+
   },
   "devDependencies": {
     "@eslint/js": "^9.30.1",
