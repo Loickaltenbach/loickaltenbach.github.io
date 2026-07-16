@@ -3,9 +3,9 @@
 //   public/cv-loic-kaltenbach-frontend.pdf
 //   public/cv-loic-kaltenbach-mobile.pdf
 export const CV = {
-  fullstack: '/cv-loic-kaltenbach-fullstack.pdf',
-  frontend: '/cv-loic-kaltenbach-frontend.pdf',
-  mobile: '/cv-loic-kaltenbach-mobile.pdf'
+  fullstack: '/src/assets/CV_Kaltenbach_Loïc_Fullstack_Oriented.pdf',
+  frontend: '/src/assets/CV_Kaltenbach_Loïc_Frontend_Oriented.pdf',
+  mobile: '/src/assets/CV_Kaltenbach_Loïc_Mobile_Oriented.pdf'
 }
 
 export default CV
