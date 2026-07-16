@@ -1,15 +1,15 @@
 {
-  "name": "Loïc Kaltenbach - Full Stack Developer Portfolio",
+  "name": "Loïc Kaltenbach — Full-Stack Software Engineer",
   "short_name": "LK Portfolio",
-  "description": "Full Stack Developer specializing in React, React Native, and Django. Working at Actimage GmbH.",
-  "start_url": "/portfolio/",
+  "description": "Full-stack software engineer specializing in React, React Native, Django and Node.js. Currently at Actimage GmbH.",
+  "start_url": "/",
   "display": "standalone",
-  "background_color": "#ffffff",
-  "theme_color": "#2563eb",
+  "background_color": "#FBFBFC",
+  "theme_color": "#FBFBFC",
   "orientation": "portrait-primary",
   "icons": [
     {
-      "src": "/portfolio/vite.svg",
+      "src": "/favicon.svg",
       "sizes": "any",
       "type": "image/svg+xml",
       "purpose": "any maskable"

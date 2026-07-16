@@ -1,16 +1,84 @@
+/* ─────────────────────────────────────────────────────────────
+   Design tokens — "Systems index" direction, theme-aware.
+   Light is the default; dark applies via OS preference OR an
+   explicit [data-theme] set by the header toggle.
+   ───────────────────────────────────────────────────────────── */
 :root {
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
+  --bg: #FBFBFC;
+  --surface: #F4F5F7;
+  --surface-2: #EEF0F3;
+  --line: rgba(18, 21, 28, 0.12);
+  --text: #14171D;
+  --muted: #5A6270;
+  --accent: #9A5A00;
+  --accent-strong: #B26A00;
+  --accent-fill: #F2B44C;
+  --on-accent: #241700;
+  --status: #1A8F5E;
+
+  --font-base: system-ui, -apple-system, "Segoe UI", Roboto,
+    "Hiragino Kaku Gothic ProN", "Hiragino Sans", "Yu Gothic", "YuGothic",
+    "Noto Sans JP", Meiryo, sans-serif;
+  --font-mono: ui-monospace, "SF Mono", SFMono-Regular, Menlo, Consolas,
+    "Courier New", monospace;
+
+  --maxw: 1120px;
+  --header-h: 64px;
 
   color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
+}
 
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+/* The fixed header wraps its nav to a second row on small screens,
+   so it's taller there — anchor offsets and hero padding track this. */
+@media (max-width: 720px) {
+  :root {
+    --header-h: 112px;
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #0C0E12;
+    --surface: #14171D;
+    --surface-2: #1B1F27;
+    --line: rgba(255, 255, 255, 0.10);
+    --text: #E7EAF0;
+    --muted: #99A2B2;
+    --accent: #F2B44C;
+    --accent-strong: #F7C36B;
+    --accent-fill: #F2B44C;
+    --on-accent: #1A1200;
+    --status: #3ECF8E;
+  }
+}
+
+/* Explicit choices win over the OS preference, in both directions. */
+:root[data-theme="light"] {
+  --bg: #FBFBFC;
+  --surface: #F4F5F7;
+  --surface-2: #EEF0F3;
+  --line: rgba(18, 21, 28, 0.12);
+  --text: #14171D;
+  --muted: #5A6270;
+  --accent: #9A5A00;
+  --accent-strong: #B26A00;
+  --accent-fill: #F2B44C;
+  --on-accent: #241700;
+  --status: #1A8F5E;
+}
+
+:root[data-theme="dark"] {
+  --bg: #0C0E12;
+  --surface: #14171D;
+  --surface-2: #1B1F27;
+  --line: rgba(255, 255, 255, 0.10);
+  --text: #E7EAF0;
+  --muted: #99A2B2;
+  --accent: #F2B44C;
+  --accent-strong: #F7C36B;
+  --accent-fill: #F2B44C;
+  --on-accent: #1A1200;
+  --status: #3ECF8E;
 }
 
 * {
@@ -19,22 +87,26 @@
   box-sizing: border-box;
 }
 
-body {
-  margin: 0;
-  min-width: 320px;
-  min-height: 100vh;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  line-height: 1.6;
-  color: #333;
-  background-color: #ffffff;
-}
-
 html {
   scroll-behavior: smooth;
+}
+
+body {
+  min-width: 320px;
+  min-height: 100vh;
+  font-family: var(--font-base);
+  line-height: 1.6;
+  color: var(--text);
+  background-color: var(--bg);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Japanese needs a little more breathing room and no tight tracking. */
+:root[data-lang="ja"] body {
+  line-height: 1.8;
 }
 
 #root {
@@ -46,9 +118,25 @@ button {
   background: none;
   cursor: pointer;
   font-family: inherit;
+  color: inherit;
 }
 
 a {
   text-decoration: none;
   color: inherit;
+}
+
+:focus-visible {
+  outline: 2px solid var(--accent-strong);
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
 }

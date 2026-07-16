@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<title>OG image — export at 1200×630</title>
+<!--
+  Social share card (Open Graph / Twitter). Export to public/og-image.png at 1200×630:
+  • Chrome DevTools: open this file, toggle device toolbar, set 1200×630, Capture screenshot.
+  • Or any HTML-to-image tool / `npx capture-website-cli design/og-image.html og.png --width=1200 --height=630`.
+  The .card below is exactly 1200×630.
+-->
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: #22262e; display: flex; align-items: center; justify-content: center; }
+  .card {
+    width: 1200px; height: 630px; position: relative; overflow: hidden;
+    background: #0C0E12; color: #E7EAF0;
+    font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+    padding: 84px 88px; display: flex; flex-direction: column; justify-content: center;
+  }
+  .card::before {
+    content: ""; position: absolute; inset: 0;
+    background-image: linear-gradient(rgba(255,255,255,0.06) 1px, transparent 1px);
+    background-size: 100% 72px;
+    -webkit-mask-image: linear-gradient(to bottom, transparent, #000 30%, #000 70%, transparent);
+  }
+  .mono { font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace; }
+  .eyebrow { position: relative; color: #F2B44C; font-size: 26px; letter-spacing: 0.04em; margin-bottom: 26px; }
+  h1 { position: relative; font-size: 128px; font-weight: 800; line-height: 0.92; letter-spacing: -0.04em; }
+  .lede { position: relative; margin-top: 34px; font-size: 34px; line-height: 1.4; color: #99A2B2; max-width: 30ch; }
+  .foot { position: relative; margin-top: 54px; display: flex; align-items: center; gap: 20px; font-size: 24px; color: #8A93A3; }
+  .foot .badge { background: #F2B44C; color: #1A1200; font-weight: 700; padding: 8px 16px; border-radius: 8px; }
+  .foot .dot { width: 10px; height: 10px; border-radius: 50%; background: #3ECF8E; box-shadow: 0 0 12px #3ECF8E; }
+</style>
+</head>
+<body>
+  <div class="card">
+    <div class="eyebrow mono">// full-stack software engineer</div>
+    <h1>Loïc<br />Kaltenbach</h1>
+    <div class="lede">React &amp; React Native, Django &amp; Node.js — web, mobile, backend.</div>
+    <div class="foot mono">
+      <span class="badge">loickaltenbach.github.io</span>
+      <span class="dot"></span> available for work · Strasbourg
+    </div>
+  </div>
+</body>
+</html>
