@@ -20,4 +20,14 @@ export const skillGroups = [
   }
 ]
 
+// Actively studying, not yet production-proven — kept separate from
+// skillGroups on purpose so it never reads as equal proficiency.
+export const learningSkills = [
+  'AWS',
+  'Kubernetes',
+  'Terraform',
+  'Kafka',
+  'Observability (Prometheus, Grafana, OpenTelemetry)'
+]
+
 export default skillGroups

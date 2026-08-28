@@ -24,8 +24,8 @@ const Header = () => {
     document.getElementById(sectionId)?.scrollIntoView({ behavior: 'smooth' })
   }
 
-  const links = ['home', 'about', 'projects', 'contact']
-  const sectionFor = { home: 'home', about: 'about', projects: 'projects', contact: 'contact' }
+  const links = ['home', 'about', 'projects', 'homelab', 'contact']
+  const sectionFor = { home: 'home', about: 'about', projects: 'projects', homelab: 'homelab', contact: 'contact' }
 
   return (
     <motion.header

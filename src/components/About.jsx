@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion'
-import { skillGroups } from '../data/skills'
+import { skillGroups, learningSkills } from '../data/skills'
 import { CV } from '../data/cv'
 import { useLanguage } from '../i18n/useLanguage'
 import './About.css'
@@ -89,6 +89,16 @@ const About = () => {
                 </ul>
               </div>
             ))}
+          </div>
+
+          <div className="skills-learning">
+            <h4>{t('about.learningTitle')}</h4>
+            <ul aria-label={t('about.learningTitle')}>
+              {learningSkills.map((skill) => (
+                <li key={skill} className="chip-learning">{skill}</li>
+              ))}
+            </ul>
+            <p className="skills-learning-note">{t('about.learningNote')}</p>
           </div>
         </motion.div>
       </div>

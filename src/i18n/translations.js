@@ -9,6 +9,11 @@
 //     about.languagesValue, about.cvAlso, hero.expLabel/expValue,
 //     hero.basedValue, contact.locationValue, skills.groups.mobile,
 //     skills.groups.devops.
+//   Also flagged for review (homelab + learning-in-progress content):
+//     nav.homelab, hero.focusValue, about.languagesValue (re-extended),
+//     about.highlights[2]/[3] (re-edited), about.learningTitle,
+//     about.learningNote, projects.count, projects.items['game-reviewer'],
+//     homelab.* (all keys, new section).
 //   Keep the key structure identical between `en` and `ja`.
 // ─────────────────────────────────────────────────────────────
 
@@ -18,6 +23,7 @@ export const translations = {
       home: 'Home',
       about: 'About',
       projects: 'Work',
+      homelab: 'Lab', // NEW — needs review
       contact: 'Contact'
     },
     hero: {
@@ -33,7 +39,7 @@ export const translations = {
       expLabel: 'Experience',
       expValue: '5 years',
       focusLabel: 'Focus',
-      focusValue: 'React · RN · Django'
+      focusValue: 'React · RN · Django · Docker' // NEW — needs review
     },
     about: {
       heading: 'About me',
@@ -44,7 +50,7 @@ export const translations = {
       cvFrontend: 'Frontend',
       cvMobile: 'Mobile',
       languagesLabel: 'Languages',
-      languagesValue: 'French (native) · English & German (professional) · Japanese (learning)',
+      languagesValue: 'French (native) · English & German (professional) · Japanese (currently learning)', // NEW — needs review
       highlights: [
         {
           title: 'Production dashboards & web apps',
@@ -55,23 +61,32 @@ export const translations = {
           body: 'I architect Django platforms with configurable business-rule engines and REST APIs — including a carbon-emissions measurement tool for the construction industry — and tune them for large datasets.'
         },
         {
+          // NEW — needs review
           title: 'Mobile & IoT',
-          body: 'I build and modernize React Native and Flutter apps, from BLE / Wi-Fi / MQTT tooling for industrial IoT devices to migrating a decade-old legacy app to a modern architecture.'
+          body: 'I build and modernize React Native and Flutter apps, from BLE / Wi-Fi / MQTT tooling for industrial IoT devices to Zeroconf/mDNS device discovery and WebSocket links, plus migrating a decade-old legacy app to a modern architecture.'
         },
         {
+          // NEW — needs review
           title: 'Delivery & mentoring',
-          body: 'I set up CI/CD pipelines (GitLab CI, TeamCity, Fastlane), introduce testing on projects that lack it, review code, write documentation, and mentor junior developers.'
+          body: 'I set up CI/CD pipelines (GitLab CI, TeamCity, Fastlane), containerize with Docker — including my own self-hosted Raspberry Pi homelab — introduce testing on projects that lack it, review code, write documentation, and mentor junior developers.'
         }
       ],
-      skillsTitle: 'Skills & tools'
+      skillsTitle: 'Skills & tools',
+      learningTitle: 'Currently exploring', // NEW — needs review
+      learningNote: 'Studying toward AWS certifications and building hands-on experience — not yet claiming production expertise here.' // NEW — needs review
     },
     projects: {
       heading: 'Selected work',
       intro: 'A curated set of side projects spanning full-stack, front-end, and backend work. Most of my professional work is under NDA, so these show how I build in the open.',
-      count: '05 personal projects — pro work under NDA',
+      count: '06 personal projects — pro work under NDA', // NEW — needs review
       viewGithub: 'GitHub',
       viewDemo: 'Live demo',
       items: {
+        'game-reviewer': {
+          // NEW — needs review
+          highlight: 'Full lifecycle — idea to self-hosted deployment',
+          description: 'A game review platform I designed and shipped end to end: a React, Vite, and TypeScript front end talking to a Strapi v5 backend with a PostgreSQL database, containerized with Docker and running on my own Raspberry Pi homelab behind a Caddy reverse proxy — the whole path from idea to a live, self-hosted deployment.'
+        },
         'collaborative-task-management': {
           highlight: 'Full-stack — Java backend + Angular front end',
           description: 'A full-stack task management app with a Spring Boot REST API and an Angular front end. Teams organize work into shared boards with role-based access.'
@@ -101,6 +116,14 @@ export const translations = {
         backend: 'Back-end',
         devops: 'Cloud & DevOps'
       }
+    },
+    // NEW — needs review (new section)
+    homelab: {
+      heading: 'Homelab & learning',
+      body1: 'I run a Raspberry Pi 4B homelab on my home network — Docker, Pi-hole, and a Caddy reverse proxy in front of self-hosted services. It is what actually runs Game Reviewer, one of the projects below.',
+      body2: 'I use it to learn by doing rather than just reading: domain and reverse-proxy setup, container networking, and exposing services safely.',
+      learningTitle: 'Currently exploring',
+      learningNote: 'Studying toward AWS certifications and building hands-on experience — not yet claiming production expertise here.'
     },
     contact: {
       heading: 'Get in touch',
@@ -144,6 +167,7 @@ export const translations = {
       home: 'ホーム',
       about: '自己紹介',
       projects: '制作実績',
+      homelab: 'ラボ', // NEW — needs review
       contact: 'お問い合わせ'
     },
     hero: {
@@ -159,7 +183,7 @@ export const translations = {
       expLabel: '経験', // NEW — needs review
       expValue: '5年', // NEW — needs review
       focusLabel: '専門',
-      focusValue: 'React・RN・Django'
+      focusValue: 'React・RN・Django・Docker' // NEW — needs review
     },
     about: {
       heading: '自己紹介',
@@ -186,23 +210,30 @@ export const translations = {
         {
           // NEW — needs review
           title: 'モバイル・IoT',
-          body: 'React Native・Flutter アプリの開発とモダナイズを担当。産業用 IoT 機器向けの BLE / Wi-Fi / MQTT 連携ツールから、10 年分の技術的負債を抱えるレガシーアプリの刷新まで手がけています。'
+          body: 'React Native・Flutter アプリの開発とモダナイズを担当。産業用 IoT 機器向けの BLE / Wi-Fi / MQTT 連携ツールから、Zeroconf/mDNS によるデバイス検出や WebSocket 連携、10 年分の技術的負債を抱えるレガシーアプリの刷新まで手がけています。'
         },
         {
           // NEW — needs review
           title: 'デリバリー・メンタリング',
-          body: 'CI/CD パイプライン（GitLab CI・TeamCity・Fastlane）の構築、テストのなかったプロジェクトへのテスト導入、コードレビュー、ドキュメント作成、ジュニア開発者のメンタリングを行っています。'
+          body: 'CI/CD パイプライン（GitLab CI・TeamCity・Fastlane）の構築、Docker によるコンテナ化（自宅の Raspberry Pi ホームラボを含む）、テストのなかったプロジェクトへのテスト導入、コードレビュー、ドキュメント作成、ジュニア開発者のメンタリングを行っています。'
         }
       ],
-      skillsTitle: 'スキル・ツール'
+      skillsTitle: 'スキル・ツール',
+      learningTitle: '現在学習中', // NEW — needs review
+      learningNote: 'AWS認定資格取得に向けて学習中で、実践経験を積んでいます。まだ実務レベルの専門性としては掲載していません。' // NEW — needs review
     },
     projects: {
       heading: '制作実績',
       intro: 'フルスタック・フロントエンド・バックエンドにまたがる個人プロジェクトを厳選して掲載しています。業務での実績の多くは NDA の対象のため、ここでは公開できる制作物を紹介します。',
-      count: '個人プロジェクト5件 — 業務実績は NDA 対象',
+      count: '個人プロジェクト6件 — 業務実績は NDA 対象', // NEW — needs review
       viewGithub: 'GitHub',
       viewDemo: 'デモを見る',
       items: {
+        'game-reviewer': {
+          // NEW — needs review
+          highlight: '企画から自宅サーバー運用まで一気通貫',
+          description: '企画から自分で設計・開発したゲームレビュープラットフォーム。React・Vite・TypeScript のフロントエンドが、PostgreSQL データベースを備えた Strapi v5 バックエンドと通信し、Docker でコンテナ化して自宅の Raspberry Pi ホームラボ上で Caddy リバースプロキシ経由で稼働しています。'
+        },
         'collaborative-task-management': {
           highlight: 'フルスタック — Java バックエンド + Angular フロントエンド',
           description: 'Spring Boot の REST API と Angular のフロントエンドで構成した、フルスタックのタスク管理アプリ。チームは役割ベースのアクセス権を持つ共有ボードで作業を整理できます。'
@@ -232,6 +263,14 @@ export const translations = {
         backend: 'バックエンド',
         devops: 'クラウド・DevOps' // NEW — needs review
       }
+    },
+    // NEW — needs review (new section)
+    homelab: {
+      heading: 'ホームラボ・学習中の技術',
+      body1: '自宅のネットワークで Raspberry Pi 4B のホームラボを運用しています。Docker、Pi-hole、Caddy リバースプロキシで自己ホスト型サービスを構築。下記のプロジェクトの一つ、Game Reviewer は実際にこの上で稼働しています。',
+      body2: '読むだけでなく手を動かして学ぶための場として、ドメイン・リバースプロキシの設定、コンテナネットワーク、サービスの安全な公開などに取り組んでいます。',
+      learningTitle: '現在学習中',
+      learningNote: 'AWS認定資格取得に向けて学習中で、実践経験を積んでいます。まだ実務レベルの専門性としては掲載していません。'
     },
     contact: {
       heading: 'お問い合わせ',

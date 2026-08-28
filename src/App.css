@@ -46,6 +46,17 @@ main {
   letter-spacing: 0;
 }
 
+/* Shared "in progress, not proven" chip — dashed/muted vs solid skill tags */
+.chip-learning {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  padding: 0.4rem 0.75rem;
+  background: transparent;
+  border: 1px dashed var(--muted);
+  border-radius: 6px;
+  color: var(--muted);
+}
+
 @media (max-width: 768px) {
   .container {
     padding: 0 1.25rem;
