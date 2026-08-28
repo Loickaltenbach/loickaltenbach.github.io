@@ -1,0 +1,47 @@
+.homelab {
+  background: var(--surface);
+}
+
+.homelab-grid {
+  display: grid;
+  grid-template-columns: 1.1fr 1fr;
+  gap: 3rem;
+  align-items: start;
+}
+
+.homelab-body p {
+  color: var(--muted);
+  font-size: 1.05rem;
+  line-height: 1.8;
+  margin-bottom: 1.1rem;
+  max-width: 48ch;
+}
+
+.homelab-learning h3 {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: 1rem;
+}
+
+.homelab-learning ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  list-style: none;
+  margin-bottom: 0.9rem;
+}
+
+.homelab-note {
+  font-size: 0.85rem;
+  color: var(--muted);
+  font-style: italic;
+  max-width: 40ch;
+}
+
+@media (max-width: 768px) {
+  .homelab-grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+}

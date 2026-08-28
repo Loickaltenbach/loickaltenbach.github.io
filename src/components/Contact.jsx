@@ -89,7 +89,7 @@ const Contact = () => {
           transition={{ duration: 0.6 }}
           viewport={{ once: true }}
         >
-          <span className="section-index">03</span>
+          <span className="section-index">04</span>
           <h2 id="contact-heading">{t('contact.heading')}</h2>
         </motion.header>
 

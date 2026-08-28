@@ -2,6 +2,16 @@
 // Add a `demoUrl` once a project is deployed live.
 export const projects = [
   {
+    id: 'game-reviewer',
+    title: 'Game Reviewer',
+    description:
+      'A game review platform built end to end — a React, Vite, and TypeScript front end, a Strapi v5 backend with a PostgreSQL database, containerized with Docker and deployed on a self-hosted Raspberry Pi behind a Caddy reverse proxy.',
+    highlight: 'Full lifecycle — idea to self-hosted deployment',
+    tech: ['React', 'Vite', 'TypeScript', 'Strapi', 'PostgreSQL', 'Docker'],
+    repoUrl: 'https://github.com/loickaltenbach/game-reviewer',
+    demoUrl: ''
+  },
+  {
     id: 'collaborative-task-management',
     title: 'Collaborative Task Management',
     description:
