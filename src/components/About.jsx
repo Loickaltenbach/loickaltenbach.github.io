@@ -70,6 +70,28 @@ const About = () => {
           </motion.ul>
         </div>
 
+        {/* ponytail: reuses skills/highlight styles, no dedicated CSS */}
+        <motion.div
+          className="about-skills"
+          initial={{ opacity: 0, y: 24 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.2 }}
+          viewport={{ once: true }}
+          style={{ marginBottom: '3.5rem' }}
+        >
+          <h3 className="skills-title">{t('about.japan.title')}</h3>
+          <p className="about-languages" style={{ maxWidth: '70ch' }}>{t('about.japan.intro')}</p>
+          <ul className="skills-groups" style={{ listStyle: 'none' }}>
+            {t('about.japan.values').map((v) => (
+              <li key={v.term} className="highlight-card" style={{ flexDirection: 'column', gap: '0.5rem' }}>
+                <span className="about-languages-label" lang="ja">{v.term}</span>
+                <h3>{v.title}</h3>
+                <p>{v.body}</p>
+              </li>
+            ))}
+          </ul>
+        </motion.div>
+
         <motion.div
           className="about-skills"
           initial={{ opacity: 0, y: 24 }}

@@ -14,6 +14,11 @@
 //     about.highlights[2]/[3] (re-edited), about.learningTitle,
 //     about.learningNote, projects.count, projects.items['game-reviewer'],
 //     homelab.* (all keys, new section).
+//   Also flagged for review (DevOps / observability / JLPT update):
+//     hero.role, hero.lede, hero.focusValue, about.bio1 (extended),
+//     about.languagesValue (N5), about.highlights[3] (re-edited) and [4] (new),
+//     about.learningNote, homelab.learningNote, skills.groups.observability,
+//     contact.specializationValue, footer.role, about.japan.* (new block).
 //   Keep the key structure identical between `en` and `ja`.
 // ─────────────────────────────────────────────────────────────
 
@@ -27,8 +32,8 @@ export const translations = {
       contact: 'Contact'
     },
     hero: {
-      role: 'full-stack software engineer',
-      lede: 'I build web, mobile, and backend products end to end — React & React Native on the front, Django and Node.js on the back.',
+      role: 'full-stack & DevOps engineer', // NEW — needs review
+      lede: 'I build web, mobile, and backend products end to end — React & React Native on the front, Django and Node.js on the back — and run them in production on Azure with monitoring and secure pipelines.',
       viewWork: 'View work',
       cv: 'Download CV',
       available: 'available for work',
@@ -39,18 +44,18 @@ export const translations = {
       expLabel: 'Experience',
       expValue: '5 years',
       focusLabel: 'Focus',
-      focusValue: 'React · RN · Django · Docker' // NEW — needs review
+      focusValue: 'React · Django · Azure · DevSecOps' // NEW — needs review
     },
     about: {
       heading: 'About me',
-      bio1: 'I’m a full-stack software engineer with 5 years of experience, based in Strasbourg, France, and currently at Actimage GmbH. I build web, mobile, and backend products for international teams — React & React Native on the front, Django and Node.js on the back.',
+      bio1: 'I’m a full-stack software engineer with 5 years of experience, based in Strasbourg, France, and currently at Actimage GmbH. I build web, mobile, and backend products for international teams — React & React Native on the front, Django and Node.js on the back. Over the last year my work has shifted toward DevOps: Azure monitoring and observability, secure CI/CD, and technical supervision of projects.',
       bio2: 'Most of my professional work is under NDA, so the projects below are personal side projects — they show how I think about architecture, UI, and shipping working software in the open.',
       cv: 'Download CV',
       cvAlso: 'Also:',
       cvFrontend: 'Frontend',
       cvMobile: 'Mobile',
       languagesLabel: 'Languages',
-      languagesValue: 'French (native) · English & German (professional) · Japanese (currently learning)', // NEW — needs review
+      languagesValue: 'French (native) · English & German (professional) · Japanese (N5 level, studying)', // NEW — needs review
       highlights: [
         {
           title: 'Production dashboards & web apps',
@@ -67,13 +72,45 @@ export const translations = {
         },
         {
           // NEW — needs review
-          title: 'Delivery & mentoring',
-          body: 'I set up CI/CD pipelines (GitLab CI, TeamCity, Fastlane), containerize with Docker — including my own self-hosted Raspberry Pi homelab — introduce testing on projects that lack it, review code, write documentation, and mentor junior developers.'
+          title: 'Delivery, supervision & mentoring',
+          body: 'I supervise projects technically — planning, coordinating developers, and following up with clients — set up CI/CD pipelines (Azure DevOps, GitLab CI, TeamCity, Fastlane), containerize with Docker — including my own self-hosted Raspberry Pi homelab — introduce testing on projects that lack it, review code, and mentor junior developers.'
+        },
+        {
+          // NEW — needs review
+          title: 'Observability & DevSecOps on Azure',
+          body: 'I monitor production apps with Azure Monitor, Application Insights, and Log Analytics (KQL) — alerts, dashboards, and incident follow-up — and build security into Azure DevOps pipelines with SonarQube quality gates, dependency and container scanning, and secrets kept in Azure Key Vault.'
         }
       ],
+      // NEW — needs review
+      japan: {
+        title: 'Working with Japanese teams',
+        intro: 'I’m aiming to work in Japan. Beyond studying the language, these are working values I already practise every day — and they’re a natural fit for Japanese team culture. I’m planning to relocate to Japan from late 2027 and will need visa sponsorship under the Highly Skilled Professional (HSP) visa.',
+        values: [
+          {
+            term: '報連相 · Hō-ren-sō',
+            title: 'Report, inform, consult',
+            body: 'Supervising projects taught me to keep everyone aligned: regular status updates, clear written documentation, and raising risks early with the team and the client instead of surprising them later.'
+          },
+          {
+            term: '品質 · Hinshitsu',
+            title: 'Quality first',
+            body: 'I care about getting the details right: tests on projects that had none, careful code review, SonarQube quality gates, and production monitoring so issues are caught before users notice.'
+          },
+          {
+            term: '改善 · Kaizen',
+            title: 'Continuous improvement',
+            body: 'Small, steady improvements over big rewrites: automating pipelines step by step, modernizing a decade-old legacy app, and using my homelab to keep learning by doing.'
+          },
+          {
+            term: 'チームワーク · Teamwork',
+            title: 'Team over individual',
+            body: 'Years in international French, German, and English-speaking teams taught me to listen, build consensus, and share knowledge — through mentoring juniors and documenting for the next person.'
+          }
+        ]
+      },
       skillsTitle: 'Skills & tools',
       learningTitle: 'Currently exploring', // NEW — needs review
-      learningNote: 'Studying toward AWS certifications and building hands-on experience — not yet claiming production expertise here.' // NEW — needs review
+      learningNote: 'Studying toward AWS certifications and open-source observability (Prometheus, Grafana, OpenTelemetry) — building hands-on experience, not yet claiming production expertise here.' // NEW — needs review
     },
     projects: {
       heading: 'Selected work',
@@ -114,7 +151,8 @@ export const translations = {
         frontend: 'Front-end',
         mobile: 'Mobile',
         backend: 'Back-end',
-        devops: 'Cloud & DevOps'
+        devops: 'Cloud & DevOps',
+        observability: 'Monitoring & DevSecOps' // NEW — needs review
       }
     },
     // NEW — needs review (new section)
@@ -123,7 +161,7 @@ export const translations = {
       body1: 'I run a Raspberry Pi 4B homelab on my home network — Docker, Pi-hole, and a Caddy reverse proxy in front of self-hosted services. It is what actually runs Game Reviewer, one of the projects below.',
       body2: 'I use it to learn by doing rather than just reading: domain and reverse-proxy setup, container networking, and exposing services safely.',
       learningTitle: 'Currently exploring',
-      learningNote: 'Studying toward AWS certifications and building hands-on experience — not yet claiming production expertise here.'
+      learningNote: 'Studying toward AWS certifications and open-source observability (Prometheus, Grafana, OpenTelemetry) — building hands-on experience, not yet claiming production expertise here.'
     },
     contact: {
       heading: 'Get in touch',
@@ -140,7 +178,7 @@ export const translations = {
       locationLabel: 'Location',
       locationValue: 'Strasbourg, France',
       specializationLabel: 'Specialization',
-      specializationValue: 'React, React Native, Django',
+      specializationValue: 'React, Django & Azure DevOps', // NEW — needs review
       errors: {
         nameRequired: 'Name is required',
         emailRequired: 'Email is required',
@@ -152,7 +190,7 @@ export const translations = {
       }
     },
     footer: {
-      role: 'React, React Native & Django developer',
+      role: 'Full-stack & DevOps engineer', // NEW — needs review
       connect: 'Connect',
       rights: 'All rights reserved.'
     },
@@ -171,8 +209,8 @@ export const translations = {
       contact: 'お問い合わせ'
     },
     hero: {
-      role: 'フルスタックソフトウェアエンジニア',
-      lede: 'React・React Native と Django・Node.js を用いて、Web・モバイル・バックエンドのプロダクトを設計から実装まで一貫して開発しています。',
+      role: 'フルスタック・DevOps エンジニア', // NEW — needs review
+      lede: 'React・React Native と Django・Node.js を用いて、Web・モバイル・バックエンドのプロダクトを設計から実装まで一貫して開発し、Azure 上で監視とセキュアなパイプラインを備えた本番運用まで担っています。', // NEW — needs review
       viewWork: '制作実績を見る',
       cv: '職務経歴書をダウンロード',
       available: 'お仕事のご相談を受付中',
@@ -183,19 +221,19 @@ export const translations = {
       expLabel: '経験', // NEW — needs review
       expValue: '5年', // NEW — needs review
       focusLabel: '専門',
-      focusValue: 'React・RN・Django・Docker' // NEW — needs review
+      focusValue: 'React・Django・Azure・DevSecOps' // NEW — needs review
     },
     about: {
       heading: '自己紹介',
       // NEW — needs review
-      bio1: 'フランス・ストラスブールを拠点とする、5年の経験を持つフルスタックソフトウェアエンジニアです。現在は Actimage GmbH に所属し、国際的なチームで Web・モバイル・バックエンドのプロダクトを開発しています。フロントエンドは React・React Native、バックエンドは Django・Node.js を中心としています。',
+      bio1: 'フランス・ストラスブールを拠点とする、5年の経験を持つフルスタックソフトウェアエンジニアです。現在は Actimage GmbH に所属し、国際的なチームで Web・モバイル・バックエンドのプロダクトを開発しています。フロントエンドは React・React Native、バックエンドは Django・Node.js を中心としています。この1年は DevOps へと軸足を移し、Azure の監視・オブザーバビリティ、セキュアな CI/CD、プロジェクトの技術的な統括を担当しています。',
       bio2: '業務で携わったプロジェクトの多くは秘密保持契約（NDA）の対象のため、ここでは個人で公開しているプロジェクトを掲載しています。設計・UI・実装に対する考え方が伝わればと思います。',
       cv: '職務経歴書をダウンロード',
       cvAlso: '他のバージョン：', // NEW — needs review
       cvFrontend: 'フロントエンド', // NEW — needs review
       cvMobile: 'モバイル', // NEW — needs review
       languagesLabel: '言語', // NEW — needs review
-      languagesValue: 'フランス語（母語）・英語・ドイツ語（ビジネスレベル）・日本語（学習中）', // NEW — needs review
+      languagesValue: 'フランス語（母語）・英語・ドイツ語（ビジネスレベル）・日本語（N5レベル・学習中）', // NEW — needs review
       highlights: [
         {
           // NEW — needs review
@@ -214,13 +252,45 @@ export const translations = {
         },
         {
           // NEW — needs review
-          title: 'デリバリー・メンタリング',
-          body: 'CI/CD パイプライン（GitLab CI・TeamCity・Fastlane）の構築、Docker によるコンテナ化（自宅の Raspberry Pi ホームラボを含む）、テストのなかったプロジェクトへのテスト導入、コードレビュー、ドキュメント作成、ジュニア開発者のメンタリングを行っています。'
+          title: 'デリバリー・プロジェクト統括・メンタリング',
+          body: 'プロジェクトの技術的な統括（計画、開発者間の調整、クライアントとのフォローアップ）、CI/CD パイプライン（Azure DevOps・GitLab CI・TeamCity・Fastlane）の構築、Docker によるコンテナ化（自宅の Raspberry Pi ホームラボを含む）、テストのなかったプロジェクトへのテスト導入、コードレビュー、ジュニア開発者のメンタリングを行っています。'
+        },
+        {
+          // NEW — needs review
+          title: 'Azure でのオブザーバビリティ・DevSecOps',
+          body: 'Azure Monitor・Application Insights・Log Analytics（KQL）で本番アプリを監視し、アラート・ダッシュボード・インシデント対応を行っています。また、SonarQube の品質ゲート、依存関係・コンテナのスキャン、Azure Key Vault によるシークレット管理を Azure DevOps パイプラインに組み込んでいます。'
         }
       ],
+      // NEW — needs review
+      japan: {
+        title: '日本のチームで働くために',
+        intro: '日本で働くことを目指しています。日本語の学習に加え、日頃から実践している以下の働き方は、日本のチーム文化と自然に重なると考えています。2027年末からの日本移住を予定しており、高度専門職ビザでのビザスポンサーシップを必要としています。',
+        values: [
+          {
+            term: '報連相 · Hō-ren-sō',
+            title: '報告・連絡・相談',
+            body: 'プロジェクトの統括を通じて、定期的な進捗報告、わかりやすいドキュメント作成、リスクの早期共有を徹底し、チームとクライアントの認識を常にそろえることを大切にしています。'
+          },
+          {
+            term: '品質 · Hinshitsu',
+            title: '品質へのこだわり',
+            body: 'テストのなかったプロジェクトへのテスト導入、丁寧なコードレビュー、SonarQube の品質ゲート、本番環境の監視により、ユーザーが気づく前に問題を見つけることを心がけています。'
+          },
+          {
+            term: '改善 · Kaizen',
+            title: '継続的な改善',
+            body: '大きな作り直しよりも、小さな改善の積み重ねを重視しています。パイプラインの段階的な自動化、10 年前のレガシーアプリの刷新、ホームラボでの実践的な学習を続けています。'
+          },
+          {
+            term: 'チームワーク · Teamwork',
+            title: '個人よりチーム',
+            body: 'フランス語・ドイツ語・英語の国際的なチームでの経験から、相手の話をよく聞き、合意を形成し、知識を共有することを学びました。ジュニア開発者のメンタリングや、次の担当者のためのドキュメント作成も行っています。'
+          }
+        ]
+      },
       skillsTitle: 'スキル・ツール',
       learningTitle: '現在学習中', // NEW — needs review
-      learningNote: 'AWS認定資格取得に向けて学習中で、実践経験を積んでいます。まだ実務レベルの専門性としては掲載していません。' // NEW — needs review
+      learningNote: 'AWS認定資格とオープンソースの監視ツール（Prometheus・Grafana・OpenTelemetry）を学習中で、実践経験を積んでいます。まだ実務レベルの専門性としては掲載していません。' // NEW — needs review
     },
     projects: {
       heading: '制作実績',
@@ -261,7 +331,8 @@ export const translations = {
         frontend: 'フロントエンド',
         mobile: 'モバイル', // NEW — needs review
         backend: 'バックエンド',
-        devops: 'クラウド・DevOps' // NEW — needs review
+        devops: 'クラウド・DevOps', // NEW — needs review
+        observability: '監視・DevSecOps' // NEW — needs review
       }
     },
     // NEW — needs review (new section)
@@ -270,7 +341,7 @@ export const translations = {
       body1: '自宅のネットワークで Raspberry Pi 4B のホームラボを運用しています。Docker、Pi-hole、Caddy リバースプロキシで自己ホスト型サービスを構築。下記のプロジェクトの一つ、Game Reviewer は実際にこの上で稼働しています。',
       body2: '読むだけでなく手を動かして学ぶための場として、ドメイン・リバースプロキシの設定、コンテナネットワーク、サービスの安全な公開などに取り組んでいます。',
       learningTitle: '現在学習中',
-      learningNote: 'AWS認定資格取得に向けて学習中で、実践経験を積んでいます。まだ実務レベルの専門性としては掲載していません。'
+      learningNote: 'AWS認定資格とオープンソースの監視ツール（Prometheus・Grafana・OpenTelemetry）を学習中で、実践経験を積んでいます。まだ実務レベルの専門性としては掲載していません。'
     },
     contact: {
       heading: 'お問い合わせ',
@@ -287,7 +358,7 @@ export const translations = {
       locationLabel: '所在地',
       locationValue: 'フランス・ストラスブール', // NEW — needs review
       specializationLabel: '専門分野',
-      specializationValue: 'React・React Native・Django',
+      specializationValue: 'React・Django・Azure DevOps', // NEW — needs review
       errors: {
         nameRequired: 'お名前を入力してください',
         emailRequired: 'メールアドレスを入力してください',
@@ -299,7 +370,7 @@ export const translations = {
       }
     },
     footer: {
-      role: 'React・React Native・Django エンジニア',
+      role: 'フルスタック・DevOps エンジニア', // NEW — needs review
       connect: 'リンク',
       rights: '無断転載を禁じます。'
     },
