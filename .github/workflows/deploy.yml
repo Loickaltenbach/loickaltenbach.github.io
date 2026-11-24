@@ -46,6 +46,8 @@ jobs:
         path: './dist'
 
   deploy:
+    # PRs only build (as a check); the github-pages environment only accepts main.
+    if: github.event_name == 'push'
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
