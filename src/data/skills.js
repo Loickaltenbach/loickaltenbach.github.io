@@ -16,7 +16,19 @@ export const skillGroups = [
   },
   {
     key: 'devops',
-    skills: ['Docker', 'CI/CD', 'Azure', 'Firebase', 'Git']
+    skills: ['Docker', 'CI/CD', 'Azure', 'Azure DevOps', 'GitHub Actions', 'Firebase', 'Git']
+  },
+  {
+    key: 'observability',
+    skills: [
+      'Azure Monitor',
+      'Application Insights',
+      'Log Analytics (KQL)',
+      'Alerts & dashboards',
+      'SonarQube',
+      'Dependency & container scanning',
+      'Azure Key Vault'
+    ]
   }
 ]
 
@@ -27,7 +39,7 @@ export const learningSkills = [
   'Kubernetes',
   'Terraform',
   'Kafka',
-  'Observability (Prometheus, Grafana, OpenTelemetry)'
+  'Prometheus / Grafana / OpenTelemetry'
 ]
 
 export default skillGroups
